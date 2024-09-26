@@ -1,4 +1,3 @@
-DROP DATABASE netflix;
 CREATE DATABASE Netflix;
 USE Netflix;
 CREATE TABLE movies (
@@ -68,5 +67,27 @@ VALUES
 INSERT INTO users_movies(idUsers, idMovies)
 VALUES
 ('3', '2');
+
+update users_movies
+SET score = 9
+WHERE idUsers= 1 and idMovies=2;
+
+update users_movies
+SET score = 7
+WHERE idUsers= 1 and idMovies=1;
+
+update users_movies
+SET score = 5
+WHERE idUsers= 3 and idMovies=2;
+
+select * from actors_movies;
+INSERT INTO actors_movies(idActor, idMovies)
+VALUES
+('1', '3'),
+('2', '2'),
+('3', '1');
+
+
+
 
 
