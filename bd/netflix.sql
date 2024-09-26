@@ -1,3 +1,4 @@
+DROP DATABASE netflix;
 CREATE DATABASE Netflix;
 USE Netflix;
 CREATE TABLE movies (
@@ -59,7 +60,13 @@ SELECT * FROM Users WHERE plan_details = 'Standard';
 SELECT * FROM Users WHERE name LIKE 'M%';
 DELETE FROM Users WHERE name LIKE 'M%';
 
-
-
+SELECT * FROM users_movies;
+INSERT INTO users_movies(idUsers, idMovies)
+VALUES
+('1', '1'),
+('1', '2');
+INSERT INTO users_movies(idUsers, idMovies)
+VALUES
+('3', '2');
 
 
