@@ -1,3 +1,4 @@
+DROP DATABASE netflix;
 CREATE DATABASE Netflix;
 USE Netflix;
 CREATE TABLE movies (
@@ -38,6 +39,7 @@ VALUES
 INSERT INTO Actors (name, lastname, country, birthday)
 VALUES
 ('Tom', 'Hanks', 'Estados Unidos', '1956-07-09'),
+
 ('Roberto', 'Benigni', 'Italia', '1952-10-27'),
 ('John', 'Travolta', 'Estados Unidos', '1954-02-18');
 -- Sobre movies
@@ -59,7 +61,13 @@ SELECT * FROM Users WHERE plan_details = 'Standard';
 SELECT * FROM Users WHERE name LIKE 'M%';
 DELETE FROM Users WHERE name LIKE 'M%';
 
-
-
+SELECT * FROM users_movies;
+INSERT INTO users_movies(idUsers, idMovies)
+VALUES
+('1', '1'),
+('1', '2');
+INSERT INTO users_movies(idUsers, idMovies)
+VALUES
+('3', '2');
 
 
