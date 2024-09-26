@@ -5,7 +5,7 @@ CREATE TABLE movies (
     title varchar(45) not null,
     genre varchar(45) not null,
     image varchar(1000) not null,
-    category varchar(45) not null,
+    category varchar(45) not null,dataproject
     year int
 );
 CREATE TABLE Users (
