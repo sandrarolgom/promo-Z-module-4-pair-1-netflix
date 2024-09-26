@@ -87,6 +87,12 @@ VALUES
 ('2', '2'),
 ('3', '1');
 
+-- cuántas peliculas favoritas tiene cada usuario
+
+SELECT count(idMovies), idUsers
+FROM users_movies
+GROUP BY idUsers;
+
 
 
 
