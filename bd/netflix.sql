@@ -5,7 +5,7 @@ CREATE TABLE movies (
     title varchar(45) not null,
     genre varchar(45) not null,
     image varchar(1000) not null,
-    category varchar(45) not null,
+    category varchar(45) not null,dataproject
     year int
 );
 CREATE TABLE Users (
@@ -38,6 +38,7 @@ VALUES
 INSERT INTO Actors (name, lastname, country, birthday)
 VALUES
 ('Tom', 'Hanks', 'Estados Unidos', '1956-07-09'),
+
 ('Roberto', 'Benigni', 'Italia', '1952-10-27'),
 ('John', 'Travolta', 'Estados Unidos', '1954-02-18');
 -- Sobre movies
