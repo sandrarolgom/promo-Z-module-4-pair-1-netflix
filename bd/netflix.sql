@@ -77,6 +77,7 @@ update users_movies
 SET score = 7
 WHERE idUsers= 1 and idMovies=1;
 
+SELECT * FROM users_movies;
 update users_movies
 SET score = 5
 WHERE idUsers= 3 and idMovies=2;
@@ -88,11 +89,27 @@ VALUES
 ('2', '2'),
 ('3', '1');
 
--- cuántas peliculas favoritas tiene cada usuario
 
-SELECT count(idMovies), idUsers
-FROM users_movies
-GROUP BY idUsers;
+-- cuántas peliculas favoritas tiene cada usuario
+-- Buscar usuario con el mayor número de peliculas 
+-- Si queremos buscar en dos tablas tenemos que usar INNER JOIN
+
+SELECT count(idMovies), users.idUsers, users.name
+FROM users_movies INNER JOIN users ON users.idUsers = users_movies.idUsers
+GROUP BY idUsers
+having count(idMovies) = (
+ SELECT count(idMovies) as total
+ FROM users_movies
+ GROUP BY idUsers
+ ORDER BY total desc
+ LIMIT 1
+);
+
+
+
+
+
+
 
 
 
