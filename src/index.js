@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const mysql= require('mysql2/promise');
 
 // create and config server
 const server = express();
@@ -12,8 +13,27 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-server.get("/movies", (req, res)=>{
-  const fakeMovies = [
+//crear conexión con la BD
+async function connectDB(){
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "1234",
+    database: "netflix"
+});
+  await connection.connect();
+  console.log(`se ha conectado con el id:${connection.threadId}`);
+  return connection;
+};
+
+
+server.get("/movies", async(req, res)=>{
+  const connectionDB= await connectDB();
+  const sqlQuery="select * from movies";
+  const [resultMovies]= await connectionDB.query(sqlQuery);
+  console.log(resultMovies);
+ 
+  /*const fakeMovies = [
     {
       id: 1,
       title: "Wonder Woman",
@@ -34,7 +54,8 @@ server.get("/movies", (req, res)=>{
       year: 2010,
       director: "Christopher Nolan",
     },
-  ];
+  ];*/
+  
   res.json({
     success: true,
     movies:  fakeMovies
