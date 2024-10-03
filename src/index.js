@@ -37,3 +37,7 @@ server.get("/movies", async(req, res)=>{
     movies:  resultMovies
   });
 });
+
+// Hacer un servidor de estaticos 
+const staticServerPath = './src/public-react';
+server.use(express.static(staticServerPath));
