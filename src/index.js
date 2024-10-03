@@ -18,7 +18,7 @@ async function connectDB(){
   const connection = await mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "", //PONER CONTRASEÑA PROPIA
+    password: "Shanel9208", //PONER CONTRASEÑA PROPIA
     database: "netflix"
 });
   await connection.connect();
@@ -35,5 +35,5 @@ server.get("/movies", async(req, res)=>{
   res.json({
     success: true,
     movies:  resultMovies
-  })
-})
+  });
+});

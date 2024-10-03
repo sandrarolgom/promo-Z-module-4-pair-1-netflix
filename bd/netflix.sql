@@ -105,6 +105,13 @@ having count(idMovies) = (
  LIMIT 1
 );
 
+USE netflix;
+INSERT INTO movies (title, genre, image, category, year)
+VALUES
+('Braveheart', 'War.', 'https://pics.filmaffinity.com/braveheart-898928745-mmed.jpg', 'Top 10', '1995');
+INSERT INTO movies (title, genre, image, category, year)
+VALUES
+('Princess Mononoke', 'Anime.', 'https://es.web.img3.acsta.net/pictures/22/05/09/12/02/0498795.jpg', 'Top 10', '1997');
 
 
 
