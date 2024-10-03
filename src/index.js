@@ -18,7 +18,7 @@ async function connectDB(){
   const connection = await mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "", //PONER CONTRASEÑA PROPIA
+    password: "Vertmysql21&", //PONER CONTRASEÑA PROPIA
     database: "netflix"
 });
   await connection.connect();
