@@ -1,5 +1,6 @@
 // login
 
+
 const sendLoginToApi = (data) => {
   console.log("Se están enviando datos al login:", data);
   // CAMBIA ESTE FETCH PARA QUE APUNTE A UN ENDPOINT DE TU SERVIDOR, PIENSA SI DEBE SER GET O POST, PIENSA QUÉ DATOS DEBES ENVIAR, ETC
@@ -28,8 +29,9 @@ const sendLoginToApi = (data) => {
 const sendSignUpToApi = (data) => {
   console.log("Se están enviando datos al signup:", data);
   return fetch(
-    "URL QUE VAMOS A PONER EN EL ENDPOINT", 
+    "http://localhost:4000/signup", 
     {method: "POST",
+    headers: {"content-type":"application/json"},
     body: JSON.stringify(data) //estos son los datos que le vamos a enviar al servidor
     }
   )
@@ -37,17 +39,13 @@ const sendSignUpToApi = (data) => {
     .then((data) => {
       // CAMBIA EL CONTENIDO DE ESTE THEN PARA GESTIONAR LA RESPUESTA DEL SERVIDOR Y RETORNAR AL COMPONENTE APP LO QUE NECESITA
       return(data)
-      // return {
-      //   success: false,
-      //   errorMessage: "Usuario ya existente",
-      // };
     });
 };
 
-// profile
+// profile 
 
 const sendProfileToApi = (userId, data) => {
-  console.log("Se están enviando datos al profile:", userId, data);
+  console.log("Se están enviando datos al profile :", userId, data);
   // CAMBIA ESTE FETCH PARA QUE APUNTE A UN ENDPOINT DE TU SERVIDOR, PIENSA SI DEBE SER GET O POST, PIENSA QUÉ DATOS DEBES ENVIAR, ETC
   return fetch(
     "//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/empty.json"

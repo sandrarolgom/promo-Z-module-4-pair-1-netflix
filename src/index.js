@@ -20,14 +20,13 @@ async function connectDB(){
   const connection = await mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "1234", //PONER CONTRASEÑA PROPIA
+    password: "Vertmysql21&", //PONER CONTRASEÑA PROPIA
     database: "netflix"
 });
   await connection.connect();
   console.log(`se ha conectado con el id:${connection.threadId}`);
   return connection;
 };
-
 server.get("/movies", async(req, res)=>{
   const connectionDB= await connectDB();
   const sqlQuery="select * from movies";
@@ -52,26 +51,23 @@ server.get("/movies/:id", async (req, res)=>{
 
 //endpoint para el signup
 server.post("/signup", async (req, res)=>{
-
-  const {email, password, username}= req.body
+  const {user, password, name, email, plan_details}= req.body
   const conex= await connectDB()
   const querySelect= "SELECT * FROM users WHERE email=?"
   const [resultSelect]= await conex.query(querySelect, [email])
-
+console.log(req.body);
     if(resultSelect.length === 0){
       const passHashed= await bcrypt.hash(password, 10);
 
-      const queryInsert= "INSERT INTO user (username, name, hashed-password) values (?,?,?)";
-      const [resultUser]= await conex.query(queryInsert, [username, email, passHashed]);
+      const queryInsert= "INSERT INTO users (user, password, name, email, plan_details) values (?,?,?,?,?)";
+      const [resultUser]= await conex.query(queryInsert, ["user", passHashed, "name", email, "plan_details"]);
 
       res.status (201).json({
         success: true,
-        result: resultUser.insertId,
-        userID: 'Nuevo correo añadido'
+        userId: resultUser.insertId,
       });
     }else{
       res.status(200).json({success:false, result: "El email ya existe"})
-
     }
     conex.end();
 });

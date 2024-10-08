@@ -114,9 +114,8 @@ VALUES
 ('Princess Mononoke', 'Anime.', 'https://es.web.img3.acsta.net/pictures/22/05/09/12/02/0498795.jpg', 'Top 10', '1997');
 
 DELETE FROM movies WHERE idMovies = 4 and idMovies = 5 and idMovies = 6;
-
-
-
+ALTER TABLE `netflix`.`users` 
+CHANGE COLUMN `password` `password` VARCHAR(255) NOT NULL ;
 
 
 
